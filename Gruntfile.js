@@ -80,12 +80,12 @@ module.exports = function(grunt) {
         spawn: true
       },
       js: {
-        files: ['**/*.js', '!node_modules/**/*.js', '!static/dist/**/*.js'],
+        files: ['static/js/**/*.js'],
         options: { livereload: true },
         tasks: ['js-lint', 'js-build']
       },
       json: {
-        files: ['**/*.json', '!static/dist/**/*.json', '!package.json'],
+        files: ['static/data/*.json', 'static/locales/*.json'],
         options: { livereload: true },
         tasks: ['minjson']
       },
