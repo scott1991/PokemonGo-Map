@@ -84,9 +84,14 @@ module.exports = function(grunt) {
         options: { livereload: true }
       },
       js: {
-        files: ['**/*.js', '**/*.json', '!node_modules/**/*.js', '!static/dist/**/*.js', '!static/dist/**/*.json'],
+        files: ['**/*.js', '!node_modules/**/*.js', '!static/dist/**/*.js'],
         options: { livereload: true },
         tasks: ['js-lint', 'js-build']
+      },
+      json: {
+        files: ['**/*.json', '!static/dist/**/*.json', '!package.json'],
+        options: { livereload: true },
+        tasks: ['minjson']
       },
       css: {
         files: '**/*.scss',
@@ -108,11 +113,11 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('js-build', ['babel', 'uglify', 'minjson']);
+  grunt.registerTask('js-build', ['babel', 'uglify']);
   grunt.registerTask('css-build', ['sass', 'cssmin']);
   grunt.registerTask('js-lint', ['eslint']);
 
-  grunt.registerTask('build', ['clean', 'js-build', 'css-build']);
+  grunt.registerTask('build', ['clean', 'js-build', 'css-build', 'minjson']);
   grunt.registerTask('lint', ['js-lint']);
   grunt.registerTask('default', ['build', 'watch']);
 
