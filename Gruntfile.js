@@ -79,10 +79,6 @@ module.exports = function(grunt) {
         interval: 1000,
         spawn: true
       },
-      src: {
-        files: ['**/*.html'],
-        options: { livereload: true }
-      },
       js: {
         files: ['**/*.js', '!node_modules/**/*.js', '!static/dist/**/*.js'],
         options: { livereload: true },
