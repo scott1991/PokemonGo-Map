@@ -87,7 +87,7 @@ module.exports = function(grunt) {
       json: {
         files: ['static/data/*.json', 'static/locales/*.json'],
         options: { livereload: true },
-        tasks: ['minjson']
+        tasks: ['json']
       },
       css: {
         files: '**/*.scss',
@@ -109,11 +109,12 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('js-build', ['babel', 'uglify']);
-  grunt.registerTask('css-build', ['sass', 'cssmin']);
-  grunt.registerTask('js-lint', ['eslint']);
+  grunt.registerTask('js-build', ['newer:babel', 'newer:uglify']);
+  grunt.registerTask('css-build', ['newer:sass', 'newer:cssmin']);
+  grunt.registerTask('js-lint', ['newer:eslint']);
+  grunt.registerTask('json', ['newer:minjson']);
 
-  grunt.registerTask('build', ['clean', 'js-build', 'css-build', 'minjson']);
+  grunt.registerTask('build', ['clean', 'js-build', 'css-build', 'json']);
   grunt.registerTask('lint', ['js-lint']);
   grunt.registerTask('default', ['build', 'watch']);
 
