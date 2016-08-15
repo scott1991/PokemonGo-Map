@@ -30,6 +30,14 @@ Features:
 For instructions on how to setup and run the tool, please refer to the project [wiki](https://github.com/PokemonGoMap/PokemonGo-Map/wiki), or the [video guide](https://www.youtube.com/watch?v=RJKAulPCkRI).
 
 
+apt-get -y update
+apt-get -y install python python-pip git
+git clone https://github.com/scott1991/PokemonGo-Map.git
+cd PokemonGo-Map
+pip install -r requirements.txt
+python runserver.py -u [USERNAME] -p [PASSWORD] -st 10 -k [Google Maps API key] -l "[LOCATION]" -H 0.0.0.0 -P 80
+
+
 ## Android Version
 
 There is an [Android port](https://github.com/omkarmoghe/Pokemap) in the works. All Android related prs and issues please refer to this [repo](https://github.com/omkarmoghe/Pokemap).
